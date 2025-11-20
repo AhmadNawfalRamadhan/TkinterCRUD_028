@@ -62,7 +62,7 @@ class NilaiApp:
         self.root = root
         root.title('Input Nilai Siswa - SQLite')
         root.geometry('900x520')
-        root.minisize(800, 480)
+        root.minsize(800, 400)
 
         style = ttk.Style()
         try:
@@ -149,7 +149,7 @@ class NilaiApp:
 
         self.load_table()
 
-def validate_inputs(self, nama, bio_s, fis_s, ing_s):
+    def validate_inputs(self, nama, bio_s, fis_s, ing_s):
         if not nama.strip():
             messagebox.showwarning('Validasi', 'Nama siswa harus diisi.')
             return False
@@ -166,7 +166,7 @@ def validate_inputs(self, nama, bio_s, fis_s, ing_s):
                 return False
         return True
 
-def on_submit(self):
+    def on_submit(self):
         nama = self.entry_nama.get()
         bio_s = self.entry_bio.get()
         fis_s = self.entry_fis.get()
@@ -186,7 +186,7 @@ def on_submit(self):
         self.clear_form()
         self.load_table()
 
-def load_table(self):
+    def load_table(self):
         for i in self.tree.get_children():
             self.tree.delete(i)
         rows = fetch_all()
@@ -200,13 +200,13 @@ def load_table(self):
                 counts[r[5]] += 1
         self.summary.config(text=f'Total entri: {total}    Kedokteran: {counts["Kedokteran"]}    Teknik: {counts["Teknik"]}    Bahasa: {counts["Bahasa"]}')
 
-def clear_form(self):
+    def clear_form(self):
         self.entry_nama.delete(0, tk.END)
         self.entry_bio.delete(0, tk.END)
         self.entry_fis.delete(0, tk.END)
         self.entry_ing.delete(0, tk.END)
 
-def export_csv(self):
+    def export_csv(self):
         rows = fetch_all()
         if not rows:
             messagebox.showinfo('Export CSV', 'Tidak ada data untuk diekspor.')
