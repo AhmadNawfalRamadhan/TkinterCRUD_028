@@ -219,7 +219,7 @@ def export_csv(self):
         messagebox.showinfo('Export CSV', f'Data berhasil diekspor ke {filename}')
 
 
-if name == 'main':
+if __name__ == '__main__':
     init_db()
     root = tk.Tk()
     app = NilaiApp(root)
